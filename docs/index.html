@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="Description">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+<!-- Theme: Simple -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple.css">
+
+<link rel="stylesheet" href="//unpkg.com/@fortawesome/fontawesome-free/css/fontawesome.css" />
+<link rel="stylesheet" href="//unpkg.com/@fortawesome/fontawesome-free/css/brands.css" />
+<link rel="stylesheet" href="//unpkg.com/@fortawesome/fontawesome-free/css/regular.css" />
+<link rel="stylesheet" href="//unpkg.com/@fortawesome/fontawesome-free/css/solid.css" />
+<link rel="stylesheet" href="custom.css" />
+
+ <link as='font' crossorigin='anonymous' href='https://host.iscodi.com/assets/fonts/Tajawal_Enhanced_ar_400.woff2' rel='preload'/>
+<link as='font' crossorigin='anonymous' href='https://host.iscodi.com/assets/fonts/Tajawal_Enhanced_ar_400.woff2' rel='preload'/>
+<link as='font' crossorigin='anonymous' href='https://host.iscodi.com/assets/fonts/Tajawal_Enhanced_ar_500.woff2' rel='preload'/>
+<link as='font' crossorigin='anonymous' href='https://host.iscodi.com/assets/fonts/Tajawal_Enhanced_en_500.woff2' rel='preload'/>
+<link as='font' crossorigin='anonymous' href='https://host.iscodi.com/assets/fonts/Tajawal_Enhanced_ar_700.woff2' rel='preload'/>
+<link as='font' crossorigin='anonymous' href='https://host.iscodi.com/assets/fonts/Tajawal_Enhanced_en_700.woff2' rel='preload'/>
+ 
+</head>
+<body>
+  <div id="app"></div>
+<script>
+  window.$docsify = {
+      // ...
+      themeable: {
+          readyTransition : true, // default
+          responsiveTables: true  // default
+      }
+  }
+</script>
+
+<script>
+    window.$docsify = {
+        rtl: {
+            body: "rtl",
+            sidebar: "rtl",
+            bdo: "ltr"
+        }
+    };
+</script>
+
+
+
+
+
+
+
+
+
+  <style>
+    media="(prefers-color-scheme: dark)" {
+    @media (min-width: 48em) {
+        .sidebar+.content {
+            margin-right: var(--sidebar-width);
+        }
+    }
+}
+ .sidebar {
+    float: right;
+    right: 0;
+} 
+        .sidebar-toggle {
+            
+        }
+        .sidebar+.content {
+            margin-right: var(--sidebar-width);
+        }
+
+.markdown-section .tip:before, .markdown-section .warn:before {
+    left: var(--notice-before-right);
+    right: initial;
+    margin-left: 15px;
+    position: relative;
+    left: -2px;
+}
+.markdown-section .warn, .markdown-section blockquote {
+   border-width: 0 4px 0 0; 
+   }
+
+  :root {
+    --theme-hue: 325;
+  }
+</style>
+
+<script src="//unpkg.com/docsify-rtl/build/index.min.js"></script>
+
+  <!-- Docsify v4 -->
+<script src="//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
+
+  <!-- docsify -->
+<script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
+
+<!-- docsify-themeable -->
+<script src="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/js/docsify-themeable.min.js"></script>
+
+<script src="//unpkg.com/docsify-fontawesome/dist/docsify-fontawesome.min.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const toggle = document.querySelector('.sidebar-toggle');
+    const sidebar = document.querySelector('.sidebar');
+
+    if (toggle && sidebar) {
+        // دالة لتحديث موضع الزر
+        function updateTogglePosition() {
+            // التأكد من أن الشريط الجانبي مرئي
+            if (sidebar.offsetParent !== null) {
+                if (document.body.classList.contains('sidebar-open')) {
+                    // استخدام setTimeout لضمان تحديث العرض بشكل صحيح
+                    setTimeout(function() {
+                        toggle.style.right = sidebar.offsetWidth + 'px';
+                    }, 10);
+                } else {
+                    toggle.style.right = '0';
+                }
+            }
+        }
+
+        // تحديث موضع الزر عند النقر
+        toggle.addEventListener('click', function() {
+            setTimeout(updateTogglePosition, 50);
+        });
+
+        // تحديث موضع الزر عند تغيير حجم الشاشة
+        window.addEventListener('resize', function() {
+            setTimeout(updateTogglePosition, 10);
+        });
+
+        // تحديث الموضع الأولي
+        setTimeout(updateTogglePosition, 100);
+
+        // مراقبة التغييرات في حالة الشريط الجانبي
+        const observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.attributeName === 'class') {
+                    setTimeout(updateTogglePosition, 10);
+                }
+            });
+        });
+
+        observer.observe(document.body, { attributes: true });
+
+        // مراقبة تغييرات حجم الشريط الجانبي
+        const resizeObserver = new ResizeObserver(function() {
+            updateTogglePosition();
+        });
+
+        resizeObserver.observe(sidebar);
+    }
+});
+</script>
+
+</body>
+</html>
