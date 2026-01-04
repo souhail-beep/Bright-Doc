@@ -54,6 +54,10 @@
 
 
   <style>
+body.close .sidebar-toggle {
+    transform: translateX(0);
+    margin-right: var(--sidebar-width);
+}
     media="(prefers-color-scheme: dark)" {
     @media (min-width: 48em) {
         .sidebar+.content {
@@ -158,3 +162,4 @@ document.addEventListener('DOMContentLoaded', function() {
 
 </body>
 </html>
+
